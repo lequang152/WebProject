@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+
+<html
+        lang="en"
+        class="light-style layout-menu-fixed"
+        dir="ltr"
+        data-theme="theme-default"
+        data-assets-path="../assets/"
+        data-template="vertical-menu-template-free"
+        xmlns:th="http://www.thymeleaf.org"
+>
+<head th:insert="~{head.html}">
+</head>
+
+<body>
+<!-- Layout wrapper -->
+<div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
+        <!-- Menu -->
+        <div th:insert="~{dailymenu.html}"></div>
+
+        <!-- Layout container -->
+        <div class="layout-page">
+            <!-- Navbar -->
+
+            <div th:insert="~{bigcorpnav.html}"></div>
+
+            <!-- / Navbar -->
+
+            <!-- Content wrapper -->
+            <div class="content-wrapper">
+                <!-- Content -->
+
+                <div class="container-xxl flex-grow-1 container-p-y">
+                    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Quản lý đại lý /</span>Bào hành sản phẩm</h4>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="table-responsive text-nowrap">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>Mã bảo hành</th>
+                                        <th>Mã đơn hàng</th>
+                                        <th>Mã sản phẩm</th>
+                                        <th>Tên sản phẩm</th>
+                                        <th>Tên khách hàng</th>
+                                        <th>Số điện thoại</th>
+                                        <th>Lỗi</th>
+                                        <th>Số lần bảo hành</th>
+                                        <th>Trạng thái bảo hành</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="table-border-bottom-0">
+                                    <tr th:each="p: ${listP}">
+                                        <td th:text="${p.mabaohanh}"></td>
+                                        <td th:text="${p.codecustomer}"></td>
+                                        <td th:text="${p.code}"></td>
+                                        <td th:text="${p.categoryproduct}"></td>
+                                        <td th:text="${p.namecustomer}"></td>
+                                        <td th:text="${p.phonecustomer}"></td>
+                                        <td th:text="${p.nameerror}"></td>
+                                        <td th:text="${p.quantity}"></td>
+                                        <td th:text="${p.status}"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <hr class="my-5">
+                        <div class="card mb-4">
+                            <h5 class="card-header">PHIẾU BẢO HÀNH</h5>
+                            <div class="card-body">
+                                <form th:method="POST", th:action="@{'/bigcorp/daily/' + ${session.id} + '/baohanh'}" th:object="${productServiceCenter}">
+                                    <div class="mb-3 row">
+                                        <label for="html5-tel-input" class="col-md-2 col-form-label">Mã đơn hàng</label>
+                                        <div class="col-md-10">
+                                            <input class="form-control" type="text" id="html5-tel-input" placeholder="Nhập mã..." th:field="*{codecustomer}">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                        <label for="html5-tel-input" class="col-md-2 col-form-label">Mã sản phẩm</label>
+                                        <div class="col-md-10">
+                                            <input class="form-control" type="text" id="html5-tel-input" placeholder="Nhập mã..." th:field="*{code}">
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3 row">
+                                        <label for="html5-tel-input" class="col-md-2 col-form-label">Chi tiết lỗi</label>
+                                        <div class="col-md-10">
+                                            <input class="form-control" type="text" id="html5-tel-input" placeholder="Chi tiết lỗi..." th:field="*{nameerror}">
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3 row">
+                                        <label for="exampleFormControlSelect1" class="form-label" >Trung tâm bảo hành</label>
+                                        <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example" th:field="*{codeservicecenter}">
+                                            <option th:each="sc: ${listSC}" th:text="${sc.name}" th:value="${sc.code}"></option>
+                                        </select>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary">Hoàn tất</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- / Content -->
+                <div class="content-backdrop fade"></div>
+            </div>
+            <!-- Content wrapper -->
+        </div>
+        <!-- / Layout page -->
+    </div>
+
+    <!-- Overlay -->
+    <div class="layout-overlay layout-menu-toggle"></div>
+</div>
+<!-- / Layout wrapper -->
+
+
+<div th:insert="~{footer.html}"></div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html
+        lang="en"
+        class="light-style layout-menu-fixed"
+        dir="ltr"
+        data-theme="theme-default"
+        data-assets-path="../assets/"
+        data-template="vertical-menu-template-free"
+        xmlns:th="http://www.thymeleaf.org"
+>
+<head th:insert="~{head.html}">
+</head>
+
+<body>
+<!-- Layout wrapper -->
+<div class="layout-wrapper layout-content-navbar">
+  <div class="layout-container">
+    <div th:insert="bigcorpmenu.html"></div>
+
+    <!-- Layout container -->
+    <div class="layout-page">
+      <!-- Navbar -->
+      <div th:insert="~{bigcorpnav.html}"></div>
+
+      <!-- Content wrapper -->
+      <div class="content-wrapper">
+        <!-- Content -->
+
+        <div class="container-xxl flex-grow-1 container-p-y">
+          <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tài Khoản Cung Cấp </span> </h4>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card mb-4">
+                <h5 class="card-header">Thông tin tài khoản</h5>
+                <!-- Account -->
+                <hr class="my-0" />
+                <div class="card-body">
+                  <form id="formAccountSettings" method="POST" th:object="${account}" th:action="@{/bigcorp/bandieuhanh/quanly-taikhoan/themtaikhoan}">
+                    <div class="row">
+                      <div class="mb-3 col-md-6">
+                        <label class="form-label" for="country" th:for="office">Cơ sở</label>
+                        <select id="country" class="select2 form-select" th:field="*{office}">
+                          <option th:each="office: ${listOffice}" th:value="${office}" th:text="${office}"></option>
+                        </select>
+                      </div>
+                      <div class="mb-3 col-md-6">
+                        <label for="username" class="form-label" th:for="username">Tài khoản</label>
+                        <input type="text" class="form-control" id="username" pattern="[a-zA-Z0-9]{6,}" name="address" placeholder="Ít nhất 6 ký tự" th:field="*{username}" th:text="${account.username}"/>
+                      </div>
+                      <div class="mb-3 col-md-6">
+                        <label for="password" class="form-label" th:for="password">Mật khẩu</label>
+                        <input type="text" class="form-control" pattern="[a-zA-Z0-9]{8}" id="password" name="address" placeholder="Ít nhất 8 ký tự" th:field="*{password}" th:text="${account.password}"/>
+                      </div>
+                      <div class="mb-3 col-md-6">
+                        <label th:text="${mess}"></label>
+                      </div>
+                    </div>
+                    <div class="mt-2">
+                      <button type="submit" class="btn btn-primary me-2">Lưu</button>
+                    </div>
+                  </form>
+
+                </div>
+
+                <!-- /Account -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- / Content -->
+
+<div class="buy-now">
+  <a
+          th:href="@{/bigcorp/bandieuhanh/quanly-taikhoan}"
+          class="btn btn-danger btn-buy-now"
+  >Quay Lại</a
+  >
+</div>
+
+        <div th:insert="~{footer.html}"></div>
+</body>
+</html>

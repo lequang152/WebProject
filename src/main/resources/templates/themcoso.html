@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html
+        lang="en"
+        class="light-style layout-menu-fixed"
+        dir="ltr"
+        data-theme="theme-default"
+        data-assets-path="../assets/"
+        data-template="vertical-menu-template-free"
+        xmlns:th="http://www.thymeleaf.org"
+>
+<head th:insert="~{head.html}">
+
+</head>
+
+<body>
+<!-- Layout wrapper -->
+<div class="layout-wrapper layout-content-navbar">
+  <div class="layout-container">
+    <!-- Menu -->
+    <div th:insert="~{bigcorpmenu.html}"></div>
+
+    <!-- Layout container -->
+    <div class="layout-page">
+      <!-- Navbar -->
+      <div th:insert="~{bigcorpnav.html}"></div>
+
+      <!-- Content wrapper -->
+      <div class="content-wrapper">
+
+
+        <!-- Classify -->
+        <div class="container-xxl flex-grow-1 container-p-y">
+          <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Thêm Cơ Sở Mới </span> </h4>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card mb-4">
+                <h5 class="card-header">Thông tin cơ sở</h5>
+                <!-- Account -->
+
+                <hr class="my-0" />
+                <div class="card-body">
+                  <form id="formAccountSettings" method="POST" th:action="@{/bigcorp/bandieuhanh/themmoi}" th:object="${office}">
+                    <div class="row">
+                      <div class="mb-3 col-md-6">
+                        <label for="firstName" class="form-label">Tên Cơ Sở</label>
+                        <input
+                                class="form-control"
+                                type="text"
+                                id="firstName"
+                                name="firstName"
+                                placeholder="Tên sơ sở"
+                                autofocus
+                                th:field="*{name}"
+                        />
+                      </div>
+                      <div class="mb-3 col-md-6">
+                        <label class="form-label" for="country">Địa chỉ</label>
+                        <input type="text" class="form-control" id="address" name="address" placeholder="Địa chỉ" th:field="*{address}"/>
+                      </div>
+                      <div class="mb-3 col-md-6">
+                        <label class="form-label" for="phoneNumber">Số điện thoại</label>
+                        <div class="input-group input-group-merge">
+                          <span class="input-group-text">VN (+84)</span>
+                          <input
+                                  type="text"
+                                  id="phoneNumber"
+                                  name="phoneNumber"
+                                  class="form-control"
+                                  placeholder="202 555 0111"
+                                  th:field="*{phone}"
+                          />
+                        </div>
+                      </div>
+                      <div class="mb-3 col-md-6">
+                        <label for="address" class="form-label">Quản Lý</label>
+                        <input type="text" class="form-control" id="address" name="address" placeholder="Người quản lý" th:field="*{manager}"/>
+                      </div>
+                      <div class="mb-3 col-md-6">
+                        <label class="form-label" for="country" >Loại cơ sở</label>
+                        <select id="country" class="select2 form-select" th:field="*{category}">
+                          <option th:value="warehouse">Cơ sở sản xuất</option>
+                          <option th:value="agency">Đại lý</option>
+                          <option th:value="servicecenter">Trung tâm bảo hành</option>
+                        </select>
+                      </div>
+
+                    </div>
+
+
+                    <div class="mt-2">
+                      <button type="submit" class="btn btn-primary me-2">Lưu</button>
+                    </div>
+                  </form>
+                </div>
+                <!-- /Account -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--/ Basic Bootstrap Table -->
+        <!-- / Content -->
+
+        <div class="content-backdrop fade"></div>
+      </div>
+      <!-- Content wrapper -->
+    </div>
+    <!-- / Layout page -->
+  </div>
+
+  <!-- Overlay -->
+  <div class="layout-overlay layout-menu-toggle"></div>
+</div>
+<!-- / Layout wrapper -->
+
+<div class="buy-now">
+  <a
+          th:href="@{/bigcorp/bandieuhanh}"
+          class="btn btn-danger btn-buy-now"
+  >Quay Lại</a>
+</div>
+
+<div th:insert="~{footer.html}"></div>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html
+        lang="en"
+        class="light-style layout-menu-fixed"
+        dir="ltr"
+        data-theme="theme-default"
+        data-assets-path="../assets/"
+        data-template="vertical-menu-template-free"
+        xmlns:th="http://www.thymeleaf.org"
+>
+<head th:insert="~{head.html}">
+</head>
+
+<body>
+<!-- Layout wrapper -->
+<div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
+        <!-- Menu -->
+        <div th:insert="~{cososanxuatmenu.html}"></div>
+
+        <!-- Layout container -->
+        <div class="layout-page">
+            <dvi th:insert="bigcorpnav.html"></dvi>
+
+            <!-- Content wrapper -->
+            <div class="content-wrapper">
+                <!-- Content -->
+
+                <div class="container-xxl flex-grow-1 container-p-y">
+                    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light" th:text="${title}"></span></h4>
+
+                    <!-- Basic Bootstrap Table -->
+                    <div class="card" th:each="p: ${list}">
+                        <h5 class="card-header" th:text="${p.name}"></h5>
+                        <div class="table-responsive text-nowrap">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Nhập kho</th>
+                                    <th>Xuất kho</th>
+                                </tr>
+                                </thead>
+                                <tbody class="table-border-bottom-0">
+                                <tr>
+                                    <td>Quý I</td>
+                                    <td th:text="${p.nhapquy1}"></td>
+                                    <td th:text="${p.xuatquy1}"></td>
+                                </tr>
+                                <tr>
+                                    <td>Quý II</td>
+                                    <td th:text="${p.nhapquy2}"></td>
+                                    <td th:text="${p.xuatquy2}"></td>
+                                </tr>
+                                <tr>
+                                    <td>Quý III</td>
+                                    <td th:text="${p.nhapquy3}"></td>
+                                    <td th:text="${p.xuatquy3}"></td>
+                                </tr>
+                                <tr>
+                                    <td>Quý IV</td>
+                                    <td th:text="${p.nhapquy4}"></td>
+                                    <td th:text="${p.xuatquy4}"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!--/ Basic Bootstrap Table -->
+
+                    <hr class="my-5" />
+                    <!-- / Content -->
+
+
+                    <div class="content-backdrop fade"></div>
+                </div>
+                <!-- Content wrapper -->
+            </div>
+            <!-- / Layout page -->
+        </div>
+
+        <!-- Overlay -->
+        <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
+    <!-- / Layout wrapper -->
+
+    <div th:insert="~{footer.html}"></div>
+</body>
+</html>

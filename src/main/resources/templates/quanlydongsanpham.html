@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html
+        lang="en"
+        class="light-style layout-menu-fixed"
+        dir="ltr"
+        data-theme="theme-default"
+        data-assets-path="../assets/"
+        data-template="vertical-menu-template-free"
+        xmlns:th="http://www.thymeleaf.org"
+>
+<head th:insert="~{head.html}">
+</head>
+
+<body>
+<!-- Layout wrapper -->
+<div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
+        <div th:insert="~{bigcorpmenu.html}"></div>
+        <!-- Layout container -->
+        <div class="layout-page">
+            <div th:insert="~{bigcorpnav.html}"></div>
+
+            <!-- Content wrapper -->
+            <div class="content-wrapper">
+                <!-- Content -->
+
+                <div class="container-xxl flex-grow-1 container-p-y">
+                    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Quản lý dòng sản phẩm </span> </h4>
+                    <div style="margin-bottom: 10px">
+                        <a th:href="@{/bigcorp/bandieuhanh/quanly-dongsanpham/themmoiloaisp}">
+                            <button class="btn btn-primary me-2">Thêm mới loại sản phẩm</button>
+                        </a>
+                        <br>
+                    </div>
+
+                    <div class="card" th:each="cate: ${categories}" style="margin-bottom: 15px">
+                        <h5 class="card-header" th:text="${cate.name}" style="background-color: #7fe0f6;"></h5>
+                        <div class="table-responsive text-nowrap">
+                            <table class="table">
+                                <thead class="table-dark">
+                                <tr>
+                                    <th>Mã Sản Phẩm</th>
+                                    <th>Tên Sản Phẩm</th>
+                                    <th>Hình ảnh</th>
+                                    <th>Giá</th>
+                                    <th>Thời gian bảo hành</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody class="table-border-bottom-0" th:each="p: ${categoryProducts}" th:if="${#strings.equals(p.category, cate.name)}">
+                                <tr>
+                                    <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong th:text="${p.code}"></strong></td>
+                                    <td th:text="${p.name}"></td>
+                                    <td>
+                                        <img th:src="@{${p.image}}" class="d-block rounded" height="100" width="100" id="uploadedAvatar">
+                                    </td>
+                                    <td th:text="${p.price}"></td>
+                                    <td th:text="${p.thoigianbaohanh}"></td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                                <i class="bx bx-dots-vertical-rounded"></i>
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" th:href="@{'/bigcorp/bandieuhanh/quanly-dongsanpham/suasanpham/' + ${p.id}}"
+                                                ><i class="bx bx-edit-alt me-1"></i> Sửa</a
+                                                >
+                                                <a class="dropdown-item" th:href="@{'/bigcorp/bandieuhanh/quanly-dongsanpham/xoasanpham/' + ${p.id}}"
+                                                ><i class="bx bx-trash me-1"></i> Xóa</a
+                                                >
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <hr class="my-5">
+                </div>
+                <!-- / Content -->
+
+                <div class="buy-now">
+                    <a
+                            th:href="@{/bigcorp/bandieuhanh/quanly-dongsanpham/themmoisanpham}"
+                            class="btn btn-danger btn-buy-now"
+                    >Thêm mới</a
+                    >
+                </div>
+                <div class="content-backdrop fade"></div>
+            </div>
+            <!-- Content wrapper -->
+        </div>
+        <!-- / Layout page -->
+    </div>
+
+    <!-- Overlay -->
+    <div class="layout-overlay layout-menu-toggle"></div>
+</div>
+<!-- / Layout wrapper -->
+<div th:insert="~{footer.html}"></div>
+</body>
+</html>

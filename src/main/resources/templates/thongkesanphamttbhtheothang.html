@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html
+        lang="en"
+        class="light-style layout-menu-fixed"
+        dir="ltr"
+        data-theme="theme-default"
+        data-assets-path="../assets/"
+        data-template="vertical-menu-template-free"
+        xmlns:th="http://www.thymeleaf.org"
+>
+<head th:insert="~{head.html}">
+</head>
+
+<body>
+<!-- Layout wrapper -->
+<div class="layout-wrapper layout-content-navbar">
+  <div class="layout-container">
+    <!-- Menu -->
+    <div th:insert="~{trungtambaohanhmenu.html}"></div>
+
+    <!-- Layout container -->
+    <div class="layout-page">
+      <dvi th:insert="bigcorpnav.html"></dvi>
+
+      <!-- Content wrapper -->
+      <div class="content-wrapper">
+        <!-- Content -->
+
+        <div class="container-xxl flex-grow-1 container-p-y">
+          <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light" th:text="${title}"></span></h4>
+
+          <!-- Basic Bootstrap Table -->
+          <div class="card" th:each="p: ${list}">
+            <h5 class="card-header" th:text="${p.name}"></h5>
+            <div class="table-responsive text-nowrap">
+              <table class="table">
+                <thead>
+                <tr>
+                  <th></th>
+                  <th>Nhận sản phẩm</th>
+                  <th>Trả sản phẩm</th>
+                </tr>
+                </thead>
+                <tbody class="table-border-bottom-0">
+                <tr>
+                  <td>Tháng 1</td>
+                  <td th:text="${p.nhap1}"></td>
+                  <td th:text="${p.xuat1}"></td>
+                </tr>
+                <tr>
+                  <td>Tháng 2</td>
+                  <td th:text="${p.nhap2}"></td>
+                  <td th:text="${p.xuat2}"></td>
+                </tr>
+                <tr>
+                  <td>Tháng 3</td>
+                  <td th:text="${p.nhap3}"></td>
+                  <td th:text="${p.xuat3}"></td>
+                </tr>
+                <tr>
+                  <td>Tháng 4</td>
+                  <td th:text="${p.nhap4}"></td>
+                  <td th:text="${p.xuat4}"></td>
+                </tr>
+                <tr>
+                  <td>Tháng 5</td>
+                  <td th:text="${p.nhap5}"></td>
+                  <td th:text="${p.xuat5}"></td>
+                </tr>
+                <tr>
+                  <td>Tháng 6</td>
+                  <td th:text="${p.nhap6}"></td>
+                  <td th:text="${p.xuat6}"></td>
+                </tr>
+                <tr>
+                  <td>Tháng 7</td>
+                  <td th:text="${p.nhap7}"></td>
+                  <td th:text="${p.xuat7}"></td>
+                </tr>
+                <tr>
+                  <td>Tháng 8</td>
+                  <td th:text="${p.nhap8}"></td>
+                  <td th:text="${p.xuat8}"></td>
+                </tr>
+                <tr>
+                  <td>Tháng 9</td>
+                  <td th:text="${p.nhap9}"></td>
+                  <td th:text="${p.xuat9}"></td>
+                </tr>
+                <tr>
+                  <td>Tháng 10</td>
+                  <td th:text="${p.nhap10}"></td>
+                  <td th:text="${p.xuat10}"></td>
+                </tr>
+                <tr>
+                  <td>Tháng 11</td>
+                  <td th:text="${p.nhap11}"></td>
+                  <td th:text="${p.xuat11}"></td>
+                </tr>
+                <tr>
+                  <td>Tháng 12</td>
+                  <td th:text="${p.nhap12}"></td>
+                  <td th:text="${p.xuat12}"></td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!--/ Basic Bootstrap Table -->
+
+          <hr class="my-5" />
+          <!-- / Content -->
+
+
+          <div class="content-backdrop fade"></div>
+        </div>
+        <!-- Content wrapper -->
+      </div>
+      <!-- / Layout page -->
+    </div>
+
+    <!-- Overlay -->
+    <div class="layout-overlay layout-menu-toggle"></div>
+  </div>
+  <!-- / Layout wrapper -->
+
+  <div th:insert="~{footer.html}"></div>
+</body>
+</html>

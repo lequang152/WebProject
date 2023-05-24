@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html
+        lang="en"
+        class="light-style layout-menu-fixed"
+        dir="ltr"
+        data-theme="theme-default"
+        data-assets-path="../assets/"
+        data-template="vertical-menu-template-free"
+        xmlns:th="http://www.thymeleaf.org"
+>
+<head th:insert="~{head.html}">
+</head>
+<body>
+<!-- Layout wrapper -->
+<div class="layout-wrapper layout-content-navbar">
+  <div class="layout-container">
+    <div th:insert="~{dailymenu.html}"></div>
+    <!-- Layout container -->
+    <div class="layout-page">
+      <div th:insert="~{bigcorpnav.html}"></div>
+
+      <!-- Content wrapper -->
+      <div class="content-wrapper">
+
+
+        <div class="container-xxl flex-grow-1 container-p-y">
+          <!-- Form controls -->
+          <div class="col-12">
+            <div class="card mb-4">
+              <h5 class="card-header">HÓA ĐƠN XUẤT KHO</h5>
+              <div class="card-body">
+                <form th:method="POST" th:object="${customer}" th:action="@{'/bigcorp/daily/' + ${session.id} + '/xuathoadon'}">
+
+                  <div class="mb-3 row">
+                    <label for="html5-tel-input" class="col-md-2 col-form-label">Tên khách hàng</label>
+                    <div class="col-md-10">
+                      <input class="form-control" type="text" id="html5-tel-input"
+                             placeholder="Nhập tên..." th:field="*{name}">
+                    </div>
+                  </div>
+
+                  <div class="mb-3 row">
+                    <label for="html5-tel-input" class="col-md-2 col-form-label">Số điện thoại</label>
+                    <div class="col-md-10">
+                      <input class="form-control" type="number" id="html5-tel-input"
+                             placeholder="Nhập số điện thoại..." th:field="*{phone}">
+                    </div>
+                  </div>
+
+                  <div class="mb-3 row">
+                    <label for="html5-tel-input" class="col-md-2 col-form-label">Địa chỉ</label>
+                    <div class="col-md-10">
+                      <input class="form-control" type="text" id="html5-tel-input"
+                             placeholder="Nhập số điện thoại..." th:field="*{address}">
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">Loại sản phẩm</label>
+                    <div class="col-md-10">
+                      <input class="form-control" type="text" value="1" id="html5-number-input" th:field="*{category}" readonly>
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">Sản phẩm</label>
+                    <div class="col-md-10">
+                      <input class="form-control" type="text" value="1" id="html5-number-input" th:field="*{categoryProduct}" readonly>
+                    </div>
+                  </div>
+                  <div class="mb-3 row">
+                    <label for="html5-number-input" class="col-md-2 col-form-label">Giá</label>
+                    <div class="col-md-10">
+                      <input class="form-control" type="number" value="1" id="html5-number-input" th:field="*{price}" readonly>
+                    </div>
+                  </div>
+                  <div class="mb-3 row">
+                    <label for="html5-number-input" class="col-md-2 col-form-label">Số lượng</label>
+                    <div class="col-md-10">
+                      <input class="form-control" type="number" value="1" id="html5-number-input" th:field="*{quantity}">
+                    </div>
+                  </div>
+                  <div class="mb-3 row">
+                    <label for="html5-number-input" class="col-md-2 col-form-label">Thành tiền</label>
+                    <div class="col-md-10">
+                      <input class="form-control" type="number" value="1" id="html5-number-input" th:field="*{total}" readonly>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Lưu</button>
+
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--/ Basic Bootstrap Table -->
+        <!-- / Content -->
+
+        <div class="content-backdrop fade"></div>
+      </div>
+      <!-- Content wrapper -->
+    </div>
+    <!-- / Layout page -->
+  </div>
+
+  <!-- Overlay -->
+  <div class="layout-overlay layout-menu-toggle"></div>
+</div>
+<!-- / Layout wrapper -->
+
+<div class="buy-now">
+  <a
+          th:href="@{'/bigcorp/daily/' + ${session.id}}"
+          class="btn btn-danger btn-buy-now"
+  >Quay lại</a>
+</div>
+<div th:insert="~{footer.html}"></div>
+</body>
+</html>
